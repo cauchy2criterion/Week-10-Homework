@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 400,
+  "title": "Carbon Emission and Renewable Energy Percentage per Country in 2019",
+  "data": {
+    "url": "todo.csv"
+  },
+  "transform": [],
+  "selection": {
+    "continent.highlight": {
+      "type": "multi",
+      "fields": ["Continent"],
+      "bind": "legend"
+    }
+  },
+  "mark": "circle",
+  "encoding": {
+    "x": {
+      "field": "CO2 Produced",
+      "type": "quantitative",
+      "title": "CO2 Produced in Million Tonnes",
+      "axis": { "tickCount": 4 },
+      "scale": { "type": "log", "domain": [1, 11000] }
+    },
+    "y": {
+      "field": "%Renewable Energy",
+      "type": "quantitative",
+      "title": "Total Renewable Energy Generation %"
+    },
+    "color": {
+      "field": "Continent",
+      "type": "nominal"
+    },
+    "opacity": {
+      "condition": {
+        "selection": "continent_highlight",
+        "value": 0.6
+      },
+      "value": 0.2
+    },
+    "tooltip": [
+      { "field": "Country", "type": "nominal" },
+      { "field": "Continent", "type": "nominal" },
+      {
+        "field": "CO2 Produced",
+        "type": "quantitative",
+        "format": ","
+      },
+      {
+        "field": "%Renewable Energy",
+        "type": "quantitative",
+        "format": ".2f"
+      }
+    ]
+  }
+}

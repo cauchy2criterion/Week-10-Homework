@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>31481906_Week10_Homework</title>
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="homework.css" media="all" />
+  </head>
+  <body>
+    <div id="chloropleth_map"></div>
+    <div id="scatterplot"></div>
+    <p>This is the interactive graph</p>
+
+    <script type="text/javascript">
+      var spec2 = "map2.vg.json";
+      var spec3 = "bubble.vg.json";
+      vegaEmbed("#chloropleth_map", spec2)
+        .then(function (result) {})
+        .catch(console.error);
+      vegaEmbed("#scatterplot", spec3)
+        .then(function (result) {})
+        .catch(console.error);
+    </script>
+  </body>
+</html>

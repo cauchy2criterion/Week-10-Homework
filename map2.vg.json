@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 600,
+  "title": "How Much Energy in each Australian State is Renewable?",
+  "data": {
+    "url": "states.geo.topojson",
+    "format": {
+      "type": "topojson",
+      "feature": "states.geo"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": {
+          "url": "renewable.csv"
+        },
+        "key": "Name",
+        "fields": ["% of energy from renewables"]
+      }
+    }
+  ],
+  "projection": { "type": "mercator" },
+  "mark": { "type": "geoshape" },
+  "encoding": {
+    "color": {
+      "field": "% of energy from renewables",
+      "type": "quantitative",
+      "scale": { "scheme": "redyellowgreen" }
+    },
+    "tooltip": [
+      { "field": "properties.STATE_NAME", "type": "nominal", "title": "State" },
+      { "field": "% of energy from renewables", "type": "quantitative" }
+    ]
+  }
+}
